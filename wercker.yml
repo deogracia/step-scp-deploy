@@ -1,5 +1,1 @@
-box: node
-
-build:
-  steps:
-    - wercker/validate-wercker-step@0.0.3
+box: wercker/default
