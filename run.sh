@@ -1,1 +1,1 @@
-succes "First try of this step"
+success "First try of this step"
