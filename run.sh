@@ -37,4 +37,14 @@ then
     fail 'missing source option, please add this the scp-deploy step in wercker.yml or something went wrong with the defaults'
 fi
 
+CMD_='scp -P $WERCKER_SCP_DEPLOY_SSHPORT -i $WERCKER_SCP_DEPLOY_SSHPRIVATEKEY $WERCKER_SCP_DEPLOY_SOURCE \
+     $WERCKER_SCP_DEPLOY_USER@$WERCKER_SCP_DEPLOY_HOST:$WERCKER_SCP_DEPLOY_DESTINATION'
+
+if [[ "$WERCKER_SCP_DEPLOY_HIDE_SSH_CNX_INFO_FROM_LOG" != "false" ]]
+then
+    debug $CMD_
+fi
+
+`$CMD_`
+
 success "deploy ok :D"
