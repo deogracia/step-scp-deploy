@@ -46,4 +46,8 @@ fi
 
 scp -r -P $WERCKER_SCP_DEPLOY_SSHPORT -i $WERCKER_SCP_DEPLOY_SSHPRIVATEKEY $WERCKER_SCP_DEPLOY_SOURCE $WERCKER_SCP_DEPLOY_USER@$WERCKER_SCP_DEPLOY_HOST:$WERCKER_SCP_DEPLOY_DESTINATION
 
-success "deploy ok :D"
+if [[ $? -ne 0 ]]; then
+    fail "something went wrong :/ \n $CMD_";
+else
+    success "all green :D";
+fi
